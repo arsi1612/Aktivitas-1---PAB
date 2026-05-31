@@ -10,7 +10,7 @@ class Page2 extends StatelessWidget {
       backgroundColor: const Color(0xFFF4F6F9),
       body: Column(
         children: [
-          // --- 1. CUSTOM HEADER DENGAN GRADASI ---
+          // --- 1. CUSTOM HEADER ---
           Container(
             width: double.infinity,
             padding: const EdgeInsets.only(
@@ -40,7 +40,6 @@ class Page2 extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Tombol Back (Opsional, karena ini tab utama bisa dihilangkan, tapi dibiarkan saja gapapa)
                 const SizedBox(height: 25),
                 const Text(
                   'Ruang Baca Digital:',
@@ -69,7 +68,6 @@ class Page2 extends StatelessWidget {
           // --- 2. LIST KATEGORI BUKU ---
           Expanded(
             child: ListView(
-              // PERBAIKAN DI SINI: Menambahkan bottom: 120 agar tidak tertutup navbar
               padding: const EdgeInsets.only(left: 20, right: 20, bottom: 120),
               physics: const BouncingScrollPhysics(),
               children: [
@@ -104,6 +102,23 @@ class Page2 extends StatelessWidget {
                   Colors.green,
                   const Page3(),
                 ),
+                const SizedBox(height: 16),
+                // --- 3 MENU BARU ---
+                _buildModernCategoryCard(
+                  context,
+                  'Pengembangan Diri',
+                  Icons.psychology_rounded,
+                  Colors.teal, // Atau warna lain pilihanmu
+                  const Page3(),
+                ),
+                const SizedBox(height: 16),
+                _buildModernCategoryCard(
+                  context,
+                  'Ekonomi & Bisnis',
+                  Icons.trending_up_rounded,
+                  Colors.red, // Atau warna lain pilihanmu
+                  const Page3(),
+                ),
               ],
             ),
           ),
@@ -112,7 +127,7 @@ class Page2 extends StatelessWidget {
     );
   }
 
-  // --- 3. FUNGSI WIDGET UNTUK KARTU YANG ESTETIK ---
+  // --- 3. FUNGSI WIDGET ---
   Widget _buildModernCategoryCard(
     BuildContext context,
     String judul,
@@ -144,7 +159,7 @@ class Page2 extends StatelessWidget {
             padding: const EdgeInsets.all(18.0),
             child: Row(
               children: [
-                // Ikon dengan latar belakang warna pastel
+                // Ikon
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(

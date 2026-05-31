@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'page1.dart';
 import 'page2.dart';
 import 'page3.dart';
+import 'profil_tab.dart'; // Tambahan import untuk halaman profil baru
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ruang Baca Digital',
       theme: ThemeData(fontFamily: 'Poppins'),
-
       home: const Page1(),
     );
   }
@@ -33,10 +33,11 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
-  // Daftar halaman HANYA ADA 2
+  // Daftar halaman SEKARANG ADA 3
   final List<Widget> _halaman = [
     const Page2(), // Index 0: Beranda
     const Page3(), // Index 1: Katalog
+    const ProfilTab(), // Index 2: Profile (Baru ditambahkan)
   ];
 
   void _onItemTapped(int index) {
@@ -54,10 +55,10 @@ class _MainNavigationState extends State<MainNavigation> {
       // --- DESAIN FLOATING BOTTOM NAVIGATION BAR ---
       bottomNavigationBar: Container(
         margin: const EdgeInsets.only(
-          left: 30,
-          right: 30,
+          left: 20, // Jarak sedikit dikurangi agar 3 ikon lebih leluasa
+          right: 20,
           bottom: 25,
-        ), // Jarak diperbesar agar lebih seimbang untuk 2 ikon
+        ),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
@@ -86,6 +87,7 @@ class _MainNavigationState extends State<MainNavigation> {
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
 
+            // ITEM NAVIGASI SEKARANG ADA 3
             items: const [
               BottomNavigationBarItem(
                 icon: Padding(
@@ -100,6 +102,13 @@ class _MainNavigationState extends State<MainNavigation> {
                   child: Icon(Icons.menu_book_rounded, size: 28),
                 ),
                 label: 'Katalog',
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.only(bottom: 4.0),
+                  child: Icon(Icons.person_outline_rounded, size: 28),
+                ),
+                label: 'Profile',
               ),
             ],
           ),
